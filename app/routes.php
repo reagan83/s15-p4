@@ -11,7 +11,17 @@
 |
 */
 
-Route::get('/', function()
-{
-	return View::make('hello');
-});
+// route task model
+Route::model('task', 'Task');
+
+// routing - gets
+Route::get('/', 'TasksController@index');
+Route::get('/new', 'TasksController@create');
+Route::get('/edit/{task}', 'TasksController@edit');
+Route::get('/delete/{task}', 'TasksController@delete');
+
+// routing - posts (form submissions)
+Route::post('/new', 'TasksController@handleCreate');
+Route::post('/edit', 'TasksController@handleEdit');
+Route::post('/delete', 'TasksController@handleDelete');
+

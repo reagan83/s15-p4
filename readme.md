@@ -1,6 +1,20 @@
 # Project #4
 
 # to do
+- database to store:
+* Tasks
+	- task name: string 128
+	- task status: boolean
+	- task create and updated date: dates
+	- task description: string 256?
+
+* Users
+	- email address: string 256
+	- signup date: date
+	- oauth login?!?!?!
+
+
+
 - User authentication so different users can have their own task lists.
 - A page to display all incomplete tasks.
 - A page to display all completed tasks.
