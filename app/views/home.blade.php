@@ -9,7 +9,7 @@
 @if ($tasks->isEmpty())
 	<p>No tasks - click the create button above to get started.</p>
 @else
-	<table class="table table-striped">
+	<table class="table table-hover">
 		<thead>
 			<tr>
 				<td>Complete?</td>

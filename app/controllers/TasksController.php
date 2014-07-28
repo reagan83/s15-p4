@@ -14,7 +14,13 @@ class TasksController extends BaseController
     public function completed()
     {
         // Show the edit task form.
-        return View::make('tasks');
+        $tasks = Task::all();
+
+        $tasks = $tasks->filter(function($task) {
+            return $task->completed(1);
+        });
+
+        return View::make('tasks', compact('tasks'));
     }
 
     public function logout()
@@ -27,9 +33,9 @@ class TasksController extends BaseController
     {
         // Handle create form submission.
         $task = new Task;
-        $task->taskname = Input::get('taskname');
-        $game->notes = Input::get('notes');
-        $game->save();
+        $task->taskname = Input::get('taskname', 'reagan');
+        $task->notes = Input::get('notes', 'reagan');
+        $task->save();
 
         return Redirect::action('TasksController@index');
     }
@@ -62,7 +68,7 @@ class TasksController extends BaseController
     {
         // Handle the delete confirmation.
         $id = Input::get('id');
-        $task = Game::findOrFail($id);
+        $task = Task::findOrFail($id);
         $task->delete();
 
         return Redirect::action('TasksController@index');

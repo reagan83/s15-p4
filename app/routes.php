@@ -25,5 +25,5 @@ Route::get('/logout', 'TasksController@logout');
 // routing - posts (form submissions)
 Route::post('/create', 'TasksController@handleCreate');
 Route::post('/edit', 'TasksController@handleEdit');
-Route::post('/delete', 'TasksController@handleDelete');
 
+Route::delete('/delete/{task}', 'TasksController@delete');

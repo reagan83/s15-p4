@@ -1,34 +1,37 @@
 <!-- app/views/tasks.blade.php -->
 
-<?php
+@extends('layouts.base')
 
-$loggedin = false;
+@section('body')
 
-?>
+<h2>Completed Tasks</h2>
 
-
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Narwhals</title>
-</head>
-<body>
-    @include('header')
-
-@if ($loggedin == false)
-    <p>Yikes user is not logged in!!</p>
+@if ($tasks->isEmpty())
+	<p>No tasks - click the create button above to get started.</p>
 @else
-    <p>User is logged in - let's show him/her tasks!</p>
+	<table class="table table-hover">
+		<thead>
+			<tr>
+				<td>Complete?</td>
+				<td>Task</td>
+				<td>Created</td>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach ($tasks as $task)
+				<tr>
+					<td><a href=""><span class="glyphicon glyphicon-unchecked blue"></span>
+						<span class="glyphicon glyphicon-ok blue"</span></td>
+					<td>{{{ $task->taskname }}}</td>
+					<td>{{{ $task->created_at }}}</td>
+				</tr>
+			@endforeach
+		</tbody>
+
+	</table>
+
 @endif
 
 
-    <p>Why, the Narhwal surely bacons at midnight, my good sir!</p>
-    
-    @include('footer')
-</body>
-</html>
 
-
-
-
+@stop

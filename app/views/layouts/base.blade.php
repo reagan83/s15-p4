@@ -82,35 +82,31 @@
     </div>
 
 <!-- Modal -->
-<div class="modal fade" id="create" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
+<div class="modal custom fade" id="create" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" style="text-shadow: none; color: #3c3c3c;">
     <div class="modal-content">
-    <form class="form-horizontal" role="form" method="post" action="{{ action('TasksController@handleCreate') }}">
+
+    <form class="form" role="form" method="post" action="{{ action('TasksController@handleCreate') }}">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
         <h4 class="modal-title" id="myModalLabel">Create New Task</h4>
       </div>
       <div class="modal-body">
-
           <div class="form-group">
-            <label for="taskname" class="col-sm-2 control-label">Name</label>
-            <div class="col-sm-10">
-              <input type="text" class="form-control" id="taskname" name="taskname" placeholder="">
-            </div>
+              <input type="text" class="form-control" id="taskname" name="taskname" placeholder="Task Name">
           </div>
-          <div class="form-group">
-            <label for="notes" class="col-sm-2 control-label">Notes</label>
-            <div class="col-sm-offset-2 col-sm-10">
-                <textarea class="form-control" rows="3" id="notes" name="notes"></textarea>
-            </div>
+          <div class="form-group" style="text-align: left;">
+            <label for="notes" class="control-label" style="text-align: left;">Notes</label>
+            <textarea class="form-control" rows="3" id="notes" name="notes"></textarea>
           </div>
 
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary">Save changes</button>
+        <button type="submit" class="btn btn-primary">Create</button>
       </div>
     </form>
+
     </div>
   </div>
 </div>
@@ -120,7 +116,7 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="/js/jquery.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>
   
 </body>
