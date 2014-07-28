@@ -23,15 +23,15 @@ class TasksController extends BaseController
         return View::make('tasks');
     }
 
-    public function create()
-    {
-        // Show the create task form.
-        return View::make('create');
-    }
-
     public function handleCreate()
     {
         // Handle create form submission.
+        $task = new Task;
+        $task->taskname = Input::get('taskname');
+        $game->notes = Input::get('notes');
+        $game->save();
+
+        return Redirect::action('TasksController@index');
     }
 
     public function handleCompleted(Task $task)
@@ -49,16 +49,22 @@ class TasksController extends BaseController
     public function handleEdit()
     {
         // Handle edit form submission.
-    }
+        $task = Task::findOrFail(Input::get('id'));
+        $task->taskname = Input::get('taskname');
+        $task->notes = Input::get('notes');
+        $task->completed_at = Input::get('completed');
+        $task->save();
 
-    public function delete()
-    {
-        // Show delete confirmation page.
-        return View::make('delete');
+        return Redirect::action('TasksController@index');
     }
 
     public function handleDelete()
     {
         // Handle the delete confirmation.
+        $id = Input::get('id');
+        $task = Game::findOrFail($id);
+        $task->delete();
+
+        return Redirect::action('TasksController@index');
     }
 }

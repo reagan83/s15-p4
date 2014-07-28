@@ -31,7 +31,6 @@
 </head>
 <body>
 
-
     <div class="site-wrapper">
         <div class="site-wrapper-inner">
             <div class="cover-container">
@@ -62,9 +61,9 @@
             <div class="row " style="margin-top: 25px; text-align: left;">
             <div class="col-md-5" style="float: none; margin: 0 auto;" role="main">
 
-                        <button type="button" class="btn btn-info">Create New Task</button>
+                <button class="btn btn-info" data-target="#create" data-toggle="modal">Create New Task</button>
 
-        @yield('body')
+                @yield('body')
 
                 <div class="mastfoot">
                     <div class="inner">
@@ -76,12 +75,47 @@
             </div>
             <br>
 
-
             </div>
 
         </div>
 
     </div>
+
+<!-- Modal -->
+<div class="modal fade" id="create" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+    <form class="form-horizontal" role="form" method="post" action="{{ action('TasksController@handleCreate') }}">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">Create New Task</h4>
+      </div>
+      <div class="modal-body">
+
+          <div class="form-group">
+            <label for="taskname" class="col-sm-2 control-label">Name</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="taskname" name="taskname" placeholder="">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="notes" class="col-sm-2 control-label">Notes</label>
+            <div class="col-sm-offset-2 col-sm-10">
+                <textarea class="form-control" rows="3" id="notes" name="notes"></textarea>
+            </div>
+          </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Save changes</button>
+      </div>
+    </form>
+    </div>
+  </div>
+</div>
+
+
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
