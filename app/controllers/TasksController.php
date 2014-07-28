@@ -6,8 +6,21 @@ class TasksController extends BaseController
 {
     public function index()
     {
-        // Show a listing of games.
-        return View::make('home');
+        // Show a listing of tasks.
+        $tasks = Task::all();
+        return View::make('home', compact('tasks'));
+    }
+
+    public function completed()
+    {
+        // Show the edit task form.
+        return View::make('tasks');
+    }
+
+    public function logout()
+    {
+        // Show the edit task form.
+        return View::make('tasks');
     }
 
     public function create()
@@ -19,6 +32,12 @@ class TasksController extends BaseController
     public function handleCreate()
     {
         // Handle create form submission.
+    }
+
+    public function handleCompleted(Task $task)
+    {
+        // Show the edit task form.
+        return View::make('edit');
     }
 
     public function edit(Task $task)

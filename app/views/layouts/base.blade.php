@@ -40,8 +40,8 @@
                     <div class="inner">
                         <h4 class="masthead-brand">Dwa.ly <small>simple task management</small></h4> 
                         <ul class="nav masthead-nav">
-                            <li class="active"><a href="/loremipsum">To Do</a></li>
-                            <li class=""><a href="/loremipsum">Completed</a></li>
+                            <li class="active"><a href="{{ action('TasksController@index') }}">To Do</a></li>
+                            <li class=""><a href="{{ action('TasksController@completed') }}">Completed</a></li>
                             <li>
                                 <div class="hero-avatar">
                                     <span class="avatar--large">
@@ -49,7 +49,7 @@
                                     </span>
                                 </div>
                             </li>
-                            <li class=""><a href="/useripsum">Logout</a></li>
+                            <li class=""><a href="{{ action('TasksController@logout') }}">Logout</a></li>
                         </ul>
 
                     </div>
@@ -58,14 +58,13 @@
 
             </div>
             <div class="container">
+
+            <div class="row " style="margin-top: 25px; text-align: left;">
+            <div class="col-md-5" style="float: none; margin: 0 auto;" role="main">
+
                         <button type="button" class="btn btn-info">Create New Task</button>
 
-            <div class="row " style="margin-top: 25px;">
-            <div class="col-md-3" style="float: none; margin: 0 auto;" role="main">
-
-
         @yield('body')
-
 
                 <div class="mastfoot">
                     <div class="inner">

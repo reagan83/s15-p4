@@ -20,6 +20,9 @@ Route::get('/new', 'TasksController@create');
 Route::get('/edit/{task}', 'TasksController@edit');
 Route::get('/delete/{task}', 'TasksController@delete');
 
+Route::get('/completed', 'TasksController@completed');
+Route::get('/logout', 'TasksController@logout');
+
 // routing - posts (form submissions)
 Route::post('/new', 'TasksController@handleCreate');
 Route::post('/edit', 'TasksController@handleEdit');

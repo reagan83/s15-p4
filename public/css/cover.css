@@ -54,7 +54,7 @@ body {
   margin-left: auto;
   margin-top: auto;
   margin-bottom: auto;
-  height: 300px;
+  height: 150px;
 }
 
 .container {
@@ -210,4 +210,8 @@ p {
   .cover-container {
     width: 700px;
   }
+}
+
+.blue {
+  color: blue;
 }
