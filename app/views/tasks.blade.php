@@ -20,8 +20,10 @@
 		<tbody>
 			@foreach ($tasks as $task)
 				<tr>
-					<td><a href=""><span class="glyphicon glyphicon-unchecked blue"></span>
-						<span class="glyphicon glyphicon-ok blue"</span></td>
+					<td>
+						<a href=""><span class="glyphicon glyphicon-unchecked blue"></span></a>
+						<span class="glyphicon glyphicon-ok blue"></span>
+					</td>
 					<td>{{{ $task->taskname }}}</td>
 					<td>{{{ $task->created_at }}}</td>
 				</tr>

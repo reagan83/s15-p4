@@ -20,8 +20,11 @@
 		<tbody>
 			@foreach ($tasks as $task)
 				<tr>
-					<td><a href=""><span class="glyphicon glyphicon-unchecked blue"></span>
-						<span class="glyphicon glyphicon-ok blue"</span></td>
+					<td>
+						<a href="{{ action('TasksController@complete') }}">
+						<span class="glyphicon glyphicon-unchecked blue"></span>
+						</a>
+					</td>
 					<td>{{{ $task->taskname }}}</td>
 					<td>{{{ $task->created_at }}}</td>
 				</tr>
@@ -34,6 +37,8 @@
 
 
 
-
+<!--
+	<span class="glyphicon glyphicon-ok blue"</span>
+-->
 
 @stop
