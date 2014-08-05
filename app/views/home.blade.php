@@ -21,7 +21,7 @@
 			@foreach ($tasks as $task)
 				<tr>
 					<td>
-						<a href="{{ action('TasksController@complete') }}">
+						<a href="{{ action('TasksController@completed') }}">
 						<span class="glyphicon glyphicon-unchecked blue"></span>
 						</a>
 					</td>
