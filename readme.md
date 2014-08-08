@@ -23,17 +23,8 @@ Create your own account
 
 ## Remaining To Do
 
-########### New Tasks
-- Use error checking: Don't allow empty tasks, don't allow duplicate email sign-ups, etc.
-
-########### Users
-- User authentication so different users can have their own task lists.
-
-Extra Challenges
-Add the option to email a task.
-Add/edit tasks via Ajax.
-Add the ability to login via OAuth.
-
-
-
+1) Error checking on empty task names
+2) User signups
+3) Error checking for duplicate signups
+4) OAuth to twitter
 
