@@ -23,11 +23,6 @@ Create your own account
 
 ## Remaining To Do
 
-########## Display tasks
-- A page to edit the content of existing tasks.
-- Whenever a task is displayed, it should list the date it was created and if complete, when it was completed.
-
-
 ########### New Tasks
 - Use error checking: Don't allow empty tasks, don't allow duplicate email sign-ups, etc.
 

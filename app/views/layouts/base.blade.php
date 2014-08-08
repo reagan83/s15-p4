@@ -39,10 +39,6 @@
 </head>
 <body>
 
-    @if(Session::get('flash_message'))
-        <div class='flash-message'>{{ Session::get('flash_message') }}</div>
-    @endif
-
     <div class="site-wrapper">
         <div class="site-wrapper-inner">
             <div class="cover-container">
@@ -77,8 +73,18 @@
             </div>
             <div class="container">
 
+
+
             <div class="row " style="margin-top: 25px; text-align: left;">
             <div class="col-md-5" style="float: none; margin: 0 auto;" role="main">
+
+                @if(Session::get('flash_message'))
+                    <div class="alert alert-info" role="alert">{{ Session::get('flash_message') }}</div>
+                    <script>
+                        window.setTimeout(function() { $(".alert").alert('close'); }, 1500);
+                    </script>
+                @endif
+
 
                 @yield('body')
 

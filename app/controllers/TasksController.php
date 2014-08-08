@@ -78,11 +78,11 @@ class TasksController extends BaseController
 
             $task->save();
 
-        return Redirect::action('TasksController@index')->with('flash_message', 'Task Updated!');;
+        return Redirect::action('TasksController@alltasks')->with('flash_message', 'Task Updated!');;
         }
 
 
-        return Redirect::action('TasksController@index')->withErrors($validator);
+        return Redirect::action('TasksController@alltasks')->withErrors($validator);
 
     }
 
