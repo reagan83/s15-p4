@@ -1,24 +1,31 @@
 # Project #4
 
 # to do
-* Users
-	- email address: string 256
-	- signup date: date
-	- oauth login?!?!?!
 
-- User authentication so different users can have their own task lists.
-- A page to display all incomplete tasks.
-- A page to display all completed tasks.
-- A page to display all tasks with incomplete tasks in bold and completed tasks greyed out.
+
+########## Display tasks
 - A page to edit the content of existing tasks.
 - Whenever a task is displayed, it should list the date it was created and if complete, when it was completed.
+
+
+########### New Tasks
 - Use error checking: Don't allow empty tasks, don't allow duplicate email sign-ups, etc.
+
+########### Users
+- User authentication so different users can have their own task lists.
 
 Extra Challenges
 Add the ability to edit the date of existing tasks.
 Add the option to email a task.
 Add/edit tasks via Ajax.
 Add the ability to login via OAuth.
+
+
+* Users
+	- email address: string 256
+	- signup date: date
+	- oauth login?!?!?!
+
 
 
 ## Live URL

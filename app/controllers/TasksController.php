@@ -7,26 +7,25 @@ class TasksController extends BaseController
     public function index()
     {
         // Show a listing of tasks.
-        $tasks = Task::all();
+        $tasks = Task::where('completed', '=', '0')->get();
+
         return View::make('home', compact('tasks'));
+    }
+
+    public function alltasks()
+    {
+        // Get all tasks.
+        $tasks = Task::all();
+
+        return View::make('alltasks', compact('tasks'));
     }
 
     public function completed()
     {
-        // Show the edit task form.
-        $tasks = Task::all();
+        // Get completed tasks.
+        $tasks = Task::where('completed', '=', '1')->get();
 
-        $tasks = $tasks->filter(function($task) {
-            return $task->completed(1);
-        });
-
-        return View::make('tasks', compact('tasks'));
-    }
-
-    public function logout()
-    {
-        // Show the edit task form.
-        return View::make('tasks');
+        return View::make('completed', compact('tasks'));
     }
 
     public function handleCreate()
@@ -54,14 +53,31 @@ class TasksController extends BaseController
 
     public function handleEdit()
     {
-        // Handle edit form submission.
-        $task = Task::findOrFail(Input::get('id'));
-        $task->taskname = Input::get('taskname');
-        $task->notes = Input::get('notes');
-        $task->completed_at = Input::get('completed');
-        $task->save();
+        $data = Input::all();
 
-        return Redirect::action('TasksController@index');
+        // Build the validation constraint set.
+        $rules = array(
+            'taskname_edit' => 'required|min:1'
+        );
+
+        // Create a new validator instance.
+        $validator = Validator::make($data, $rules);
+
+        if ($validator->passes()) {
+            // Handle edit form submission.
+            $task = Task::findOrFail(Input::get('taskid_edit'));
+            $task->taskname = Input::get('taskname_edit');
+            $task->notes = Input::get('tasknotes_edit');
+            $task->completed = 1;
+            $task->save();  
+
+            return "data was saved.";
+//        return Redirect::action('TasksController@home');
+        }
+
+
+        return Redirect::action('TasksController@index')->withErrors($validator);
+
     }
 
     public function handleDelete()
@@ -71,6 +87,6 @@ class TasksController extends BaseController
         $task = Task::findOrFail($id);
         $task->delete();
 
-        return Redirect::action('TasksController@index');
+        return Redirect::action('TasksController@home');
     }
 }

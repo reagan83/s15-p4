@@ -1,4 +1,4 @@
-<!-- app/views/home.blade.php -->
+<!-- app/views/alltasks.blade.php -->
 
 @extends('layouts.base')
 
@@ -6,10 +6,10 @@
 
 <button class="btn btn-info" data-target="#create" data-toggle="modal">Create New Task</button>
 
-<h2>Your Open Tasks</h2>
+<h2>All Tasks</h2>
 
 @if ($tasks->isEmpty())
-	<p>No tasks - click the create button above to get started.</p>
+	<p>No tasks! Go create some!</p>
 @else
 	<table class="table table-hover">
 		<thead>
@@ -24,9 +24,12 @@
 			@foreach ($tasks as $task)
 				<tr>
 					<td>
-						<a href="{{ action('TasksController@completed') }}">
-						<span class="glyphicon glyphicon-unchecked blue"></span>
-						</a>
+						@if ($task->completed == "1")
+							<a href=""><span class="glyphicon glyphicon-ok blue"></span></a>
+						@else
+							<a href=""><span class="glyphicon glyphicon-unchecked blue"></span></a>
+						@endif
+
 					</td>
 					<td>{{{ $task->taskname }}}</td>
 					<td>{{{ $task->created_at }}}</td>
@@ -35,7 +38,7 @@
 							Modify
 						</a>
 					</td>
-					
+
 				</tr>
 			@endforeach
 		</tbody>
@@ -45,9 +48,5 @@
 @endif
 
 
-
-<!--
-	<span class="glyphicon glyphicon-ok blue"</span>
--->
 
 @stop

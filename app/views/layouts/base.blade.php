@@ -24,8 +24,16 @@
     <meta name="msapplication-TileColor" content="#3372DF">
 
     @section('head')
+        <link href="/css/glyphicon.css" rel="stylesheet">
         <link href="/css/bootstrap.min.css" rel="stylesheet">
         <link href="/css/cover.css" rel="stylesheet">
+
+
+        <!-- Bootstrap core JavaScript
+        ================================================== -->
+        <script src="/js/jquery.min.js"></script>
+        <script src="/js/bootstrap.min.js"></script>
+
     @show
 
 </head>
@@ -43,8 +51,9 @@
                     <div class="inner">
                         <h4 class="masthead-brand">Dwa.ly <small>simple task management</small></h4> 
                         <ul class="nav masthead-nav">
-                            <li class="active"><a href="{{ action('TasksController@index') }}">To Do</a></li>
-                            <li class=""><a href="{{ action('TasksController@completed') }}">Completed</a></li>
+                            <li class="{{Request::path() == '/' ? 'active' : '';}}"><a href="{{ action('TasksController@index') }}">To Do</a></li>
+                            <li class="{{Request::path() == 'completed' ? 'active' : '';}}"><a href="{{ action('TasksController@completed') }}">Completed</a></li>
+                            <li class="{{Request::path() == 'alltasks' ? 'active' : '';}}"><a href="{{ action('TasksController@alltasks') }}">All Tasks</a></li>
                             <li>
                                 <div class="hero-avatar">
                                     <span class="avatar--large">
@@ -53,14 +62,12 @@
                                 </div>
                             </li>
                             <li class="">
-
 @if(Auth::check())
-    <a href='/logout'>Log out {{ Auth::user()->email; }}</a>
+    <a href='{{ action('HomeController@logout') }}'>Log out {{ Auth::user()->email; }}</a>
 @else 
-    <a href='/signup'>Sign up</a> or <a href='/login'>Log in</a>
+    <a href='{{ action('HomeController@signup') }}'>Sign up</a> or <a href='{{ action('HomeController@login') }}'>Log in</a>
 @endif
-
-                                <a href="{{ action('TasksController@logout') }}">Logout</a></li>
+                            </li>
                         </ul>
 
                     </div>
@@ -72,8 +79,6 @@
 
             <div class="row " style="margin-top: 25px; text-align: left;">
             <div class="col-md-5" style="float: none; margin: 0 auto;" role="main">
-
-                <button class="btn btn-info" data-target="#create" data-toggle="modal">Create New Task</button>
 
                 @yield('body')
 
@@ -125,11 +130,64 @@
 
 
 
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="/js/jquery.min.js"></script>
-    <script src="/js/bootstrap.min.js"></script>
+<!-- Edit Modal -->
+<div class="modal custom fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" style="text-shadow: none; color: #3c3c3c;">
+    <div class="modal-content">
+
+    <ul class="errors">
+    @foreach($errors->all() as $message)
+        <li>{{ $message }}</li>
+    @endforeach
+    </ul>
+        
+
+    <form class="form" role="form" method="post" action="{{ action('TasksController@handleEdit') }}">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">Edit Task</h4>
+      </div>
+      <div class="modal-body">
+          <input type="hidden" name="taskid_edit" id="taskid_edit" value="">
+
+          <div class="form-group">
+              <input type="text" class="form-control" id="taskname_edit" name="taskname_edit" placeholder="Task Name">
+          </div>
+          <div class="form-group" style="text-align: left;">
+            <label for="tasknotes_edit" class="control-label" style="text-align: left;">Notes</label>
+            <textarea class="form-control" rows="3" id="tasknotes_edit" name="tasknotes_edit"></textarea>
+          </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Update</button>
+      </div>
+    </form>
+
+    </div>
+  </div>
+</div>
+
+
+<script>
+
+    $(document).on("click", ".open-editshowitemdialog", function () {
+    console.log("show item hello!");
+    var taskid = $(this).data("id");
+    var taskname = $(this).data("taskname");
+    var tasknotes = $(this).data("tasknotes");
+    console.log(taskid);
+    console.log(taskname);
+    console.log(tasknotes);
+    $(".modal-body #taskid_edit").val(taskid);
+    $(".modal-body #taskname_edit").val(taskname);
+    $(".modal-body #tasknotes_edit").text(tasknotes);
+    });
+
+</script>
+
+
   
 </body>
 </html>
