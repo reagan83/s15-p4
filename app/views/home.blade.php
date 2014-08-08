@@ -14,7 +14,6 @@
 	<table class="table table-hover">
 		<thead>
 			<tr>
-				<td>Complete?</td>
 				<td>Task</td>
 				<td>Created</td>
 				<td></td>
@@ -23,17 +22,12 @@
 		<tbody>
 			@foreach ($tasks as $task)
 				<tr>
-					<td>
-						<a href="{{ action('TasksController@completed') }}">
-						<span class="glyphicon glyphicon-unchecked blue"></span>
-						</a>
-					</td>
 					<td>{{{ $task->taskname }}}</td>
 					<td>{{{ $task->created_at }}}</td>
 					<td>
-						<a class="open-editshowitemdialog" data-toggle="modal" data-target="#edit" data-id="{{{ $task->id }}}" data-taskname="{{{ $task->taskname }}}" data-tasknotes="{{{ $task->notes }}}" href="#">
-							Modify
-						</a>
+
+						@include('layouts.edittask')
+
 					</td>
 					
 				</tr>

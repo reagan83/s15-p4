@@ -68,11 +68,17 @@ class TasksController extends BaseController
             $task = Task::findOrFail(Input::get('taskid_edit'));
             $task->taskname = Input::get('taskname_edit');
             $task->notes = Input::get('tasknotes_edit');
-            $task->completed = 1;
-            $task->save();  
 
-            return "data was saved.";
-//        return Redirect::action('TasksController@home');
+            // parse task complete checkbox!
+            if (Input::get('taskcompleted_edit') == "on") {
+                $task->completed = 1;
+            } else {                
+                $task->completed = 0;
+            }
+
+            $task->save();
+
+        return Redirect::action('TasksController@index')->with('flash_message', 'Task Updated!');;
         }
 
 

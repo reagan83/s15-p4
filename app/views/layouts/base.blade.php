@@ -140,7 +140,7 @@
         <li>{{ $message }}</li>
     @endforeach
     </ul>
-        
+
 
     <form class="form" role="form" method="post" action="{{ action('TasksController@handleEdit') }}">
       <div class="modal-header">
@@ -158,6 +158,22 @@
             <textarea class="form-control" rows="3" id="tasknotes_edit" name="tasknotes_edit"></textarea>
           </div>
 
+
+        <div class="form-group" style="text-align: left;">
+            <label class="control-label" style="text-align: left;" id="taskcompleted_edit">Completed?</label>
+              <input type="checkbox" class="form-control" id="taskcompleted_edit" name="taskcompleted_edit" placeholder="">
+        </div>
+
+        <div class="form-group" style="text-align: left;">
+            <label class="control-label" style="text-align: left;" id="">Created Date</label>
+              <input type="text" class="form-control" id="taskcreated_at_edit" name="taskcreated_at_edit" placeholder="" disabled>
+        </div>
+        <div class="form-group" style="text-align: left;">
+            <label class="control-label" style="text-align: left;" id="taskcompleteddate_edit">Completed Date</label>
+              <input type="text" class="form-control" id="taskcompleted_at_edit" name="taskcompleted_at_edit" placeholder="" disabled>
+        </div>
+
+
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -173,16 +189,28 @@
 <script>
 
     $(document).on("click", ".open-editshowitemdialog", function () {
-    console.log("show item hello!");
-    var taskid = $(this).data("id");
-    var taskname = $(this).data("taskname");
-    var tasknotes = $(this).data("tasknotes");
-    console.log(taskid);
-    console.log(taskname);
-    console.log(tasknotes);
-    $(".modal-body #taskid_edit").val(taskid);
-    $(".modal-body #taskname_edit").val(taskname);
-    $(".modal-body #tasknotes_edit").text(tasknotes);
+        console.log("show item hello!");
+        var taskid = $(this).data("id");
+        var taskname = $(this).data("taskname");
+        var tasknotes = $(this).data("tasknotes");
+        var taskcompleted = $(this).data("completed");
+        var taskcreated_at = $(this).data("createddate");
+        var taskupdated_at = $(this).data("completeddate");
+        console.log(taskid);
+        console.log(taskname);
+        console.log(tasknotes);
+        console.log(taskcompleted);
+        console.log(taskcreated_at);
+        $(".modal-body #taskid_edit").val(taskid);
+        $(".modal-body #taskname_edit").val(taskname);
+        $(".modal-body #tasknotes_edit").text(tasknotes);
+        $(".modal-body #taskcreated_at_edit").val(taskcreated_at);
+        $(".modal-body #taskcompleted_edit").prop('checked', false);
+
+        if (taskcompleted == "1") { // only populate completed date if task is complete
+            $(".modal-body #taskcompleted_edit").prop('checked', true);
+            $(".modal-body #taskcompleted_at_edit").val(taskupdated_at);
+        }
     });
 
 </script>

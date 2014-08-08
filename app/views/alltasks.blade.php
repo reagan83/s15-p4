@@ -34,9 +34,9 @@
 					<td>{{{ $task->taskname }}}</td>
 					<td>{{{ $task->created_at }}}</td>
 					<td>
-						<a class="open-editshowitemdialog" data-toggle="modal" data-target="#edit" data-id="{{{ $task->id }}}" data-taskname="{{{ $task->taskname }}}" data-tasknotes="{{{ $task->notes }}}" href="#">
-							Modify
-						</a>
+
+						@include('layouts.edittask')
+
 					</td>
 
 				</tr>
