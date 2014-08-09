@@ -21,9 +21,4 @@ Create your own account
 * Images from glyphicons
 * Tons of inspiration from CodeBright book
 
-## Remaining To Do
-
-2) User signups
-3) Error checking for duplicate signups
-4) OAuth to twitter
 

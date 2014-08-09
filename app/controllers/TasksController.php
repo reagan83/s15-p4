@@ -9,7 +9,7 @@ class TasksController extends BaseController
     {
 
         if (Auth::check() == false) {
-            return View::make('login');
+            return View::make('login')->with('flash_errors', 'Must be logged in.');
         }
 
         $auth_email = Auth::user()->email;
@@ -23,7 +23,7 @@ class TasksController extends BaseController
     public function alltasks()
     {
         if (Auth::check() == false) {
-            return "user is not logged in.";
+            return View::make('login')->with('flash_errors', 'Must be logged in.');
         }
 
         $auth_email = Auth::user()->email;
@@ -38,7 +38,7 @@ class TasksController extends BaseController
     {
 
         if (Auth::check() == false) {
-            return "user is not logged in.";
+            return View::make('login')->with('flash_errors', 'Must be logged in.');
         }
 
         $auth_email = Auth::user()->email;
