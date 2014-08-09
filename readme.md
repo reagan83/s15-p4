@@ -12,8 +12,6 @@ This is project #4 (final project) for the DWA15 course at Harvard Summer School
 Create your own account
 
 ## Validation URL
-
-## NEED TO VALIDATE
 <http://validator.w3.org/check?uri=http%3A%2F%2Frwilliams-p4.gopagoda.com%2F>
 
 ## Plugins, libraries, packages, or outside code
