@@ -9,7 +9,7 @@ or
 This is project #4 (final project) for the DWA15 course at Harvard Summer School. This project is written in the Laravel framework for PHP and provides a simple interface for managing tasks. The project is located on [GitHub](https://github.com/reagan83/s15-p4).
 
 ## Specific testing details & credentials
-Create your own account
+The database for this project is in an SQLite database and works locally.  Getting this to run on Pagodabox has produced errors when writing to records (creating a new account).  If you pull the code locally this project will work.
 
 ## Validation URL
 <http://validator.w3.org/check?uri=http%3A%2F%2Frwilliams-p4.gopagoda.com%2F>
