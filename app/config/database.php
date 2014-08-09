@@ -26,7 +26,7 @@ return array(
 	|
 	*/
 
-	'default' => 'sqlite',
+	'default' => 'mysql',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -43,15 +43,17 @@ return array(
 	| choice installed on your machine before you begin development.
 	|
 
+
+	*/
+
+	'connections' => array(
+
 		'sqlite' => array(
 			'driver'   => 'sqlite',
 			'database' => __DIR__.'/../database/production.sqlite',
 			'prefix'   => '',
 		),
 
-	*/
-
-	'connections' => array(
 
 	    'mysql' => array(
 	        'driver'    => 'mysql',
