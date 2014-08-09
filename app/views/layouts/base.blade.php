@@ -44,8 +44,8 @@
             <div class="cover-container">
 
                 <div class="masthead clearfix">
-                    <div class="inner">
-                        <h4 class="masthead-brand">Dwa.ly <small>simple task management</small></h4> 
+                    <div class="inner"><a href="/">
+                        <h4 class="masthead-brand">Dwa.ly <small>simple task management</small></h4></a> 
                         <ul class="nav masthead-nav">
                             <li class="{{Request::path() == '/' ? 'active' : '';}}"><a href="{{ action('TasksController@index') }}">To Do</a></li>
                             <li class="{{Request::path() == 'completed' ? 'active' : '';}}"><a href="{{ action('TasksController@completed') }}">Completed</a></li>
@@ -81,7 +81,7 @@
                 @if(Session::get('flash_message'))
                     <div class="alert alert-info" role="alert">{{ Session::get('flash_message') }}</div>
                     <script>
-                        window.setTimeout(function() { $(".alert").alert('close'); }, 1500);
+                        window.setTimeout(function() { $(".alert").alert('close'); }, 2000);
                     </script>
                 @endif
 

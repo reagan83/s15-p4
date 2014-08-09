@@ -6,7 +6,7 @@
 
 <h1>Sign up</h1>
 
-{{ Form::open(array('url' => '/signup')) }}
+{{ Form::open(array('url' => '/signup', 'class' => 'darkform')) }}
 
     Email<br>
     {{ Form::text('email') }}<br><br>

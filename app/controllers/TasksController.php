@@ -4,26 +4,47 @@
 
 class TasksController extends BaseController
 {
+
     public function index()
     {
+
+        if (Auth::check() == false) {
+            return "user is not logged in.";
+        }
+
+        $auth_email = Auth::user()->email;
+
         // Show a listing of tasks.
-        $tasks = Task::where('completed', '=', '0')->get();
+        $tasks = Task::where('completed', '=', '0')->where('email', '=', $auth_email)->get();
 
         return View::make('home', compact('tasks'));
     }
 
     public function alltasks()
     {
+        if (Auth::check() == false) {
+            return "user is not logged in.";
+        }
+
+        $auth_email = Auth::user()->email;
+
         // Get all tasks.
-        $tasks = Task::all();
+        $tasks = Task::where('email', '=', $auth_email)->get();
 
         return View::make('alltasks', compact('tasks'));
     }
 
     public function completed()
     {
+
+        if (Auth::check() == false) {
+            return "user is not logged in.";
+        }
+
+        $auth_email = Auth::user()->email;
+
         // Get completed tasks.
-        $tasks = Task::where('completed', '=', '1')->get();
+        $tasks = Task::where('completed', '=', '1')->where('email', '=', $auth_email)->get();
 
         return View::make('completed', compact('tasks'));
     }
@@ -31,12 +52,27 @@ class TasksController extends BaseController
     public function handleCreate()
     {
         // Handle create form submission.
-        $task = new Task;
-        $task->taskname = Input::get('taskname', 'reagan');
-        $task->notes = Input::get('notes', 'reagan');
-        $task->save();
+        $data = Input::all();
 
-        return Redirect::action('TasksController@index');
+        // Build the validation constraint set.
+        $rules = array(
+            'taskname' => 'required|min:1'
+        );
+
+        // Create a new validator instance.
+        $validator = Validator::make($data, $rules);
+
+        if ($validator->passes()) {
+            $task = new Task;
+            $task->taskname = Input::get('taskname', 'reagan');
+            $task->notes = Input::get('notes', 'reagan');
+            $task->email = Auth::user()->email;
+            $task->save();
+
+            return Redirect::action('TasksController@index');
+        }
+
+        return Redirect::action('TasksController@index')->with('flash_errors', 'Task Name Required.');
     }
 
     public function handleCompleted(Task $task)
@@ -78,11 +114,11 @@ class TasksController extends BaseController
 
             $task->save();
 
-        return Redirect::action('TasksController@alltasks')->with('flash_message', 'Task Updated!');;
+        return Redirect::action('TasksController@alltasks')->with('flash_message', 'Task Updated!');
         }
 
 
-        return Redirect::action('TasksController@alltasks')->withErrors($validator);
+        return Redirect::action('TasksController@alltasks')->with('flash_errors', 'Taskname cannot be empty');
 
     }
 

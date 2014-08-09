@@ -26,7 +26,7 @@ class HomeController extends BaseController {
         Auth::logout();
 
         # Send them to the homepage
-        return Redirect::to('/');
+        return View::make('login');
     }
 
     public function login()
@@ -38,7 +38,12 @@ class HomeController extends BaseController {
     public function handlelogin()
     {
         // Show the login task form.
-        return View::make('login');
+        if (Auth::attempt(array('email' => $email, 'password' => $password)))
+        {
+            return Redirect::intended('index');
+        }
+
+        return View::make('login')->with('flash_message', 'username/password not found.');
     }
 
 
@@ -55,21 +60,47 @@ class HomeController extends BaseController {
         $user = new User;
         $user->email    = Input::get('email');
         $user->password = Hash::make(Input::get('password'));
-        $user->email    = Input::get('email');
 
-        # Try to add the user 
-        try {
-            $user->save();
+
+        // Handle create form submission.
+        $data = Input::all();
+
+        $rules = array(
+            'email' => 'unique:users,email'
+        );
+
+        // Create a new validator instance.
+        $validator = Validator::make($data, $rules);
+
+        if ($validator->passes()) {
+
+            # Try to add the user 
+            try {
+                $user->save();
+            }
+            # Fail
+            catch (Exception $e) {
+                print $e;
+    //            return Redirect::to('/signup')->with('flash_message', $e . 'Sign up failed; please try again.')->withInput();
+            }
+
+            # Log the user in
+            Auth::login($user);
+            return Redirect::to('/');
         }
-        # Fail
-        catch (Exception $e) {
-            return Redirect::to('/signup')->with('flash_message', $e . 'Sign up failed; please try again.')->withInput();
+        else {
+            $errmessages = $validator->messages();
+
+            foreach ($errmessages->all() as $message)
+            {
+                //
+                print $message . "<br>";
+            }
+            return;
         }
 
-        # Log the user in
-        Auth::login($user);
 
-        return Redirect::to('index')->with('flash_message', 'Welcome to Foobooks!');
+        return Redirect::to('signup')->with('flash_message', 'Email address is already registered.');
     }
 
 

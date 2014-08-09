@@ -6,11 +6,7 @@
 
 <h1>Log in</h1>
 
-@if (Session::has('flash_message'))
-	<p>{{ Session::get('flash_message') }}</p>
-@else
-
-	{{ Form::open(array('url' => '/login', 'role' => 'form')) }}
+	{{ Form::open(array('url' => '/login', 'role' => 'form', 'class' => 'darkform')) }}
 
 	    Email<br>
 	    {{ Form::text('email') }}<br><br>
@@ -21,7 +17,5 @@
 	    {{ Form::submit('Submit', ['class' => 'btn btn-large btn-primary openbutton']) }}
 
 	{{ Form::close() }}
-
-@endif
 
 @stop

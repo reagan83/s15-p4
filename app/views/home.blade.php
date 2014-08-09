@@ -8,6 +8,14 @@
 
 <h2>Your Open Tasks</h2>
 
+@if(Session::get('flash_errors'))
+    <div class="alert alert-info" role="alert">{{ Session::get('flash_errors') }}</div>
+    <script>
+        window.setTimeout(function() { $(".alert").alert('close'); }, 1800);
+    </script>
+@endif
+
+
 @if ($tasks->isEmpty())
 	<p>No tasks - click the create button above to get started.</p>
 @else

@@ -23,7 +23,6 @@ Create your own account
 
 ## Remaining To Do
 
-1) Error checking on empty task names
 2) User signups
 3) Error checking for duplicate signups
 4) OAuth to twitter
