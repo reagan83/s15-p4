@@ -53,18 +53,16 @@ return array(
 
 	'connections' => array(
 
-	
-
-    'mysql' => array(
-        'driver'    => 'mysql',
-        'host'      => 'localhost',
-        'database'  => 'mario',
-        'username'  => 'lashawna',
-        'password'  => 'jWa1vxyV',
-        'charset'   => 'utf8',
-        'collation' => 'utf8_unicode_ci',
-        'prefix'    => '',
-    ),
+	    'mysql' => array(
+	        'driver'    => 'mysql',
+	        'host'      => 'tunnel.pagodabox.com:3306',
+	        'database'  => 'mario',
+	        'username'  => 'lashawna',
+	        'password'  => 'jWa1vxyV',
+	        'charset'   => 'utf8',
+	        'collation' => 'utf8_unicode_ci',
+	        'prefix'    => '',
+	    ),
 
 	),
 
