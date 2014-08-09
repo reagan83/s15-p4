@@ -1,10 +1,7 @@
-<!-- app/views/layouts/base.blade.php -->
-
 <!doctype html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="A simple task management utility developed for Harvard DWA15 with love from San Francisco, CA by Reagan Williams @ Microsoft.">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -167,7 +164,7 @@
 
         <div class="form-group" style="text-align: left;">
             <label class="control-label" style="text-align: left;" id="taskcompleted_editlabel">Completed?</label>
-              <input type="checkbox" class="form-control" id="taskcompleted_edit" name="taskcompleted_edit" placeholder="">
+              <input type="checkbox" class="form-control" id="taskcompleted_edit" name="taskcompleted_edit">
         </div>
 
         <div class="form-group" style="text-align: left;">
