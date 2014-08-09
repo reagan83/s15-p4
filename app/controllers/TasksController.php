@@ -9,7 +9,7 @@ class TasksController extends BaseController
     {
 
         if (Auth::check() == false) {
-            return "user is not logged in.";
+            return View::make('login');
         }
 
         $auth_email = Auth::user()->email;
