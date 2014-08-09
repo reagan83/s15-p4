@@ -42,15 +42,29 @@ return array(
 	| so make sure you have the driver for your particular database of
 	| choice installed on your machine before you begin development.
 	|
-	*/
-
-	'connections' => array(
 
 		'sqlite' => array(
 			'driver'   => 'sqlite',
 			'database' => __DIR__.'/../database/production.sqlite',
 			'prefix'   => '',
 		),
+
+	*/
+
+	'connections' => array(
+
+	
+
+    'mysql' => array(
+        'driver'    => 'mysql',
+        'host'      => 'localhost',
+        'database'  => 'mario',
+        'username'  => 'lashawna',
+        'password'  => 'jWa1vxyV',
+        'charset'   => 'utf8',
+        'collation' => 'utf8_unicode_ci',
+        'prefix'    => '',
+    ),
 
 	),
 
