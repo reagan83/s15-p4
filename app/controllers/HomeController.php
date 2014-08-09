@@ -88,17 +88,6 @@ class HomeController extends BaseController {
             Auth::login($user);
             return Redirect::to('/');
         }
-        else {
-            $errmessages = $validator->messages();
-
-            foreach ($errmessages->all() as $message)
-            {
-                //
-                print $message . "<br>";
-            }
-            return;
-        }
-
 
         return Redirect::to('signup')->with('flash_message', 'Email address is already registered.');
     }

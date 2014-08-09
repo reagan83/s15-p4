@@ -1,5 +1,3 @@
-<!-- /app/views/login.blade.php -->
-
 @extends('layouts.base')
 
 @section('body')

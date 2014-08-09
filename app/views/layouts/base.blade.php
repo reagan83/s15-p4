@@ -137,7 +137,7 @@
 
 
 <!-- Edit Modal -->
-<div class="modal custom fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal custom fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="myModalLabelEdit" aria-hidden="true">
   <div class="modal-dialog" style="text-shadow: none; color: #3c3c3c;">
     <div class="modal-content">
 
@@ -151,7 +151,7 @@
     <form class="form" role="form" method="post" action="{{ action('TasksController@handleEdit') }}">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-        <h4 class="modal-title" id="myModalLabel">Edit Task</h4>
+        <h4 class="modal-title" id="myModalLabelEdit">Edit Task</h4>
       </div>
       <div class="modal-body">
           <input type="hidden" name="taskid_edit" id="taskid_edit" value="">
@@ -166,16 +166,16 @@
 
 
         <div class="form-group" style="text-align: left;">
-            <label class="control-label" style="text-align: left;" id="taskcompleted_edit">Completed?</label>
+            <label class="control-label" style="text-align: left;" id="taskcompleted_editlabel">Completed?</label>
               <input type="checkbox" class="form-control" id="taskcompleted_edit" name="taskcompleted_edit" placeholder="">
         </div>
 
         <div class="form-group" style="text-align: left;">
-            <label class="control-label" style="text-align: left;" id="">Created Date</label>
+            <label class="control-label" style="text-align: left;" id="createddateedit_label">Created Date</label>
               <input type="text" class="form-control" id="taskcreated_at_edit" name="taskcreated_at_edit" placeholder="" disabled>
         </div>
         <div class="form-group" style="text-align: left;">
-            <label class="control-label" style="text-align: left;" id="taskcompleteddate_edit">Completed Date</label>
+            <label class="control-label" style="text-align: left;" id="taskcompleteddate_editlabel">Completed Date</label>
               <input type="text" class="form-control" id="taskcompleted_at_edit" name="taskcompleted_at_edit" placeholder="" disabled>
         </div>
 

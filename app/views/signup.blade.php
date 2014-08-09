@@ -1,5 +1,3 @@
-<!-- /app/views/signup.blade.php -->
-
 @extends('layouts.base')
 
 @section('body')

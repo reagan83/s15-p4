@@ -1,5 +1,3 @@
-<!-- app/views/home.blade.php -->
-
 @extends('layouts.base')
 
 @section('body')
