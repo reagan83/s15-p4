@@ -7,6 +7,7 @@ web1:
   name: rwilliams-p4
   shared_writable_dirs:
     - /app/storage/cache
+    - /app/storage/database
     - /app/storage/logs
     - /app/storage/meta
     - /app/storage/sessions
@@ -18,6 +19,9 @@ web1:
     - pdo_mysql
     - mcrypt
     - memcached
+  before_deploy:
+    - "php artisan migrate:install"
+    - "php artisan migrate"
   after_deploy:
     - "rm -f app/storage/cache/*"
     - "rm -f app/storage/views/*"
