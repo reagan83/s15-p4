@@ -13,12 +13,12 @@ The database for this project is in an SQLite database and works locally.  Getti
 
 Steps:
 
-1) mkdir rwilliams
-2) cd rwilliams
-3) git clone https://github.com/reagan83/s15-p4.git
-4) composer install
-5) configure MAMP to point to this project's public directory
-6) Load browser to localhost and click "Sign up"
+1. mkdir rwilliams
+2. cd rwilliams
+3. git clone https://github.com/reagan83/s15-p4.git
+4. composer install
+5. configure MAMP to point to this project's public directory
+6. Load browser to localhost and click "Sign up"
 
 ## Validation URL
 <http://validator.w3.org/check?uri=http%3A%2F%2Frwilliams-p4.gopagoda.com%2F>
